@@ -1,35 +1,46 @@
-# Claude Code Marketplace
+# WizApp Claude Code Plugins
 
-Une collection de plugins et skills pour étendre les fonctionnalités de Claude Code.
+Collection de plugins Claude Code pour étendre vos capacités de développement.
+
+## Plugins disponibles
+
+Voir le [catalogue des plugins](./plugins/README.md) pour la liste complète.
+
+| Plugin | Description |
+|--------|-------------|
+| [react-component](./plugins/react-component/) | Création standardisée de composants React UI avec vérification de réutilisabilité |
+
+## Installation
+
+```
+/plugin marketplace add goulkreek/wizapp-claude-marketplace
+```
+
+```bash
+# Cloner le repo
+git clone https://github.com/wizapp/wizapp-claude-marketplace.git
+
+# Utiliser un plugin
+claude --plugin-dir ./wizapp-claude-marketplace/plugins/react-component
+```
 
 ## Structure
 
 ```
 plugins/
-├── <nom-plugin>/
-│   ├── README.md          # Documentation du plugin
-│   ├── skill.md           # Définition du skill Claude Code
-│   └── ...                # Fichiers additionnels
+└── plugin-name/
+    ├── .claude-plugin/
+    │   └── plugin.json
+    ├── README.md
+    ├── commands/
+    ├── agents/
+    ├── skills/
+    └── hooks/
 ```
 
-## Installation
+## Contribuer
 
-Pour installer un plugin, copiez le contenu du dossier du plugin dans votre configuration Claude Code :
-
-```bash
-cp -r plugins/<nom-plugin>/* ~/.claude/commands/
-```
-
-## Plugins disponibles
-
-*Aucun plugin pour le moment. Les plugins seront ajoutés prochainement.*
-
-## Contribution
-
-1. Créez un nouveau dossier dans `plugins/`
-2. Ajoutez un `README.md` décrivant votre plugin
-3. Ajoutez les fichiers de skill nécessaires
-4. Soumettez une Pull Request
+Voir [CONTRIBUTING.md](./CONTRIBUTING.md) pour créer un nouveau plugin.
 
 ## Licence
 

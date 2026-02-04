@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "wizapp-claude-marketplace",
+  "version": "1.0.0",
+  "description": "Collection de plugins Claude Code par WizApp pour le développement React et plus",
+  "owner": {
+    "name": "WizApp",
+    "email": "dev@wizapp.com"
+  },
+  "plugins": [
+    {
+      "name": "react-component",
+      "description": "Création standardisée de composants React UI avec vérification de réutilisabilité, patterns TypeScript et Tailwind CSS",
+      "version": "1.0.0",
+      "author": {
+        "name": "WizApp",
+        "email": "dev@wizapp.com"
+      },
+      "source": "./plugins/react-component",
+      "category": "development"
+    }
+  ]
+}
