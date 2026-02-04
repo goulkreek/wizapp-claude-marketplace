@@ -1,0 +1,10 @@
+{
+  "name": "react-component",
+  "version": "1.0.0",
+  "description": "Plugin pour la création standardisée de composants React UI avec vérification de réutilisabilité",
+  "author": {
+    "name": "WizApp",
+    "email": "dev@wizapp.com"
+  },
+  "keywords": ["react", "component", "ui", "tailwind", "typescript", "standardization"]
+}
