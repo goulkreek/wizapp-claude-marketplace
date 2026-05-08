@@ -14,6 +14,49 @@ Provide standardized patterns for creating reusable React UI components with Typ
 
 Activate when creating new React components or extending existing ones. Check for existing similar components before creating new ones to avoid duplication.
 
+## ⚠️ Règles strictes (lecture obligatoire)
+
+Avant d'écrire ou modifier un composant, consulter **`references/strict-rules.md`** qui contient toutes les règles non-négociables. Résumé :
+
+### TypeScript
+- **Jamais** `any`, **jamais** de cast `as` / `<Type>` → utiliser `unknown` + type guards ou des génériques
+- **Toujours** exporter l'interface des props : `export interface XxxProps`
+- Préférer un type spécifique à un primitif (union littérale, branded type, template literal)
+
+### Style
+- **Toujours** des arrow functions (`const Component: FC<Props> = () => {}`) — jamais de `function` declarations
+- **Jamais** d'IIFE dans le JSX (`{(() => { ... })()}`) — extraire un composant nommé à la place
+
+### Architecture
+- Découpage **UI / Container / Feature** : séparer rendu pur et logique métier
+- **Règle des 70%** : si un composant existant couvre ≥70% du besoin, l'**adapter** (variant, allowedXXX, renderXXX) plutôt que dupliquer
+- Composants spécialisés héritent **toujours** des props du parent via `extends` (jamais redéfinir une prop existante)
+
+### Limites
+- ≤ 300 lignes par fichier, ≤ 40 lignes par fonction, ≤ 10 branches de complexité cyclomatique
+
+### Formulaires
+- **Stack obligatoire** : react-hook-form + @hookform/resolvers/zod + zod
+- **Interdit** : yup, class-validator, validation manuelle inline
+
+### Asynchrone
+- `async/await` ou promises, **jamais** de callbacks (sauf wrapper interne pour API tierce)
+
+### Qualité
+- Pas de magic numbers/strings → constantes nommées
+- Pas de code commenté, pas de TODO sans ticket, pas d'imports inutilisés
+- Tests **100% de couverture** sur tout code ajouté ou modifié (statements, branches, functions, lines)
+
+### Stories Ladle
+- Si **Ladle est installé** dans le projet (présence de `@ladle/react` dans `package.json`, dossier `.ladle/`, ou stories existantes) : créer/mettre à jour `<ComponentName>.stories.tsx` à côté de chaque composant créé ou modifié, avec une story par variante et par état (loading, error, empty, disabled, edge cases)
+- Si **Ladle n'est pas installé** : **proposer** à l'utilisateur de l'ajouter (`pnpm add -D @ladle/react` + script `"ladle": "ladle serve"`) avant de continuer
+
+### Conventions projet
+- Tous textes UI, commentaires et messages d'erreur **en français**
+- Commits : `type(scope): description`, jamais de mention IA/Claude
+
+**Voir le détail complet, exemples, et checklist finale dans `references/strict-rules.md`.**
+
 ## Core Principles
 
 ### Single Responsibility
@@ -285,6 +328,7 @@ Use `/find-component` command to search for similar components.
 ### Reference Files
 
 For detailed patterns and advanced techniques:
+- **`references/strict-rules.md`** — Règles strictes obligatoires (TypeScript, style, architecture, formulaires, tests, conventions projet)
 - **`references/tailwind-patterns.md`** - Tailwind CSS class organization
 - **`references/typescript-patterns.md`** - TypeScript interface patterns
 
